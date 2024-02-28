@@ -17,4 +17,6 @@
 
     packages = [];
   };
+
+  programs.alacritty.enable = true;
 }
