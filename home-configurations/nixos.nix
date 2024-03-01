@@ -1,12 +1,9 @@
 {
   lib,
-  ezModules,
   osConfig,
   ...
 }: {
-  imports = with ezModules; [
-    shellenv
-  ];
+  imports = [../home-modules/shellenv ../home-modules/kitty.nix ../home-modules/starship.nix];
 
   home = {
     username = osConfig.users.users.nixos.name or "nixos";

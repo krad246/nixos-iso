@@ -1,4 +1,5 @@
 {
+  imports = [./nerdfonts.nix];
   programs.kitty = {
     enable = true;
     shellIntegration.mode = "enabled";

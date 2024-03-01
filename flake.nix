@@ -153,7 +153,7 @@
 
       ezConfigs = {
         root = ./.;
-        globalArgs = {inherit inputs;};
+        globalArgs = {inherit self inputs;};
         home = {
           extraSpecialArgs = {
             inherit inputs;
