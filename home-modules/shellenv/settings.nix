@@ -9,6 +9,7 @@
   # Switch to flakes and DISABLE the caching of failed evaluations.
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
+    eval-cache = false
   '';
 
   news.display = "silent";
