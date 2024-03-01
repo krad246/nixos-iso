@@ -1,11 +1,11 @@
 {
   lib,
   osConfig,
-ezModules,
-pkgs,
+  ezModules,
+  pkgs,
   ...
 }: {
-  imports = with ezModules; [ shellenv kitty starship ];
+  imports = with ezModules; [shellenv kitty starship];
   home = {
     username = osConfig.users.users.nixos.name or "nixos";
     stateVersion = lib.trivial.release;
