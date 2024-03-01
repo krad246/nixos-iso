@@ -18,5 +18,4 @@
 .*.swo
 .DS_Store
 
-configuration.nix
 hardware-configuration.nix
