@@ -1,10 +1,11 @@
 {
   lib,
   osConfig,
+ezModules,
+pkgs,
   ...
 }: {
-  imports = [../home-modules/shellenv ../home-modules/kitty.nix ../home-modules/starship.nix];
-
+  imports = with ezModules; [ shellenv kitty starship ];
   home = {
     username = osConfig.users.users.nixos.name or "nixos";
     stateVersion = lib.trivial.release;
@@ -12,6 +13,6 @@
       osConfig.users.users.nixos.home
       or "/home/nixos";
 
-    packages = [];
+    packages = with pkgs; [direnv nix-direnv git gh];
   };
 }
