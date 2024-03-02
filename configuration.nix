@@ -13,7 +13,7 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/disk/by-partlabel/disk-nvme0n1-ESP";
+  boot.loader.grub.device = "/dev/nvme0n1p1";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -83,7 +83,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.krad246 = {
     isNormalUser = true;
-    description = "krad246";
+    description = "Keerthi";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
