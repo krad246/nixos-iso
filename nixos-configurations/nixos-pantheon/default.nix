@@ -1,3 +1,3 @@
 {
-  imports = [../../configuration.nix] ++ [./nixos.nix ./platform.nix];
+  imports = [./nixos.nix ./platform.nix];
 }
