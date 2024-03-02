@@ -1,4 +1,4 @@
-{...}: {
+_: {
   # Filesystem configurations to overlay over top of whatever the hardware configuration is.
   # Designed around impermanence.
 

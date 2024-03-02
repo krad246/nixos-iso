@@ -1,6 +1,6 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   config,
   pkgs,
@@ -9,22 +9,22 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+    ./disko-config.nix
   ];
 
-  # Bootloader.
+  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1p1";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Define on which hard drive you want to install Grub.
+  boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
+  # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/New_York";
