@@ -1,3 +1,3 @@
 {ezModules, ...}: {
-  imports = with ezModules; [efiboot nixos-cli pantheon-desktop];
+  imports = with ezModules; [efiboot nixos pantheon-desktop flake-registry];
 }
