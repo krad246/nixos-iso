@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = with ezModules; [shellenv kitty starship];
+  imports = with ezModules; [shellenv kitty starship discord];
   home = {
     username = osConfig.users.users.nixos.name or "nixos";
     stateVersion = lib.trivial.release;
