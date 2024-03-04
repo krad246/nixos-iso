@@ -8,6 +8,5 @@
       sha256 = "1lrnvgd5w41wrgidp3vwv2ahpvl0a61c2lai6qs16ri71g00kqn0";
     };
     disko = "${tarball}/module.nix";
-  in
-    builtins.trace disko ["${disko}"];
+  in ["${disko}"];
 }
