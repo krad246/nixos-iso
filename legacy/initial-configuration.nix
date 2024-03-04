@@ -8,8 +8,6 @@ args @ {
   ...
 }: {
   imports = [
-    ../nixos-modules/efiboot.nix
-    ../nixos-modules/pantheon-desktop.nix
     ../nixos-modules/nixos
   ];
 
@@ -23,7 +21,8 @@ args @ {
     device = "nodev"; # or "nodev" for efi only
   };
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos-pantheon"; # Define your hostname.
+
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -91,11 +90,12 @@ args @ {
       firefox
       #  thunderbird
     ];
+    initialHashedPassword = "";
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "krad246";
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "krad246";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -106,6 +106,9 @@ args @ {
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
+
+
+  security.sudo.wheelNeedsPassword = false;
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = lib.trivial.release;

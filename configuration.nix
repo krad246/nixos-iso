@@ -1,3 +1,3 @@
 {
-  imports = [./legacy] ++ [./nixos-modules/nixos ./nixos-modules/pantheon-desktop.nix];
+  imports = [./legacy ./hardware-configuration.nix];
 }
