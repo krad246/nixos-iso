@@ -1,3 +1,3 @@
 {
-  imports = [./nixos.nix ./platform.nix];
+  imports = [./nixos-pantheon.nix ./platform.nix];
 }
