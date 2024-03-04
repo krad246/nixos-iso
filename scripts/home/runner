@@ -10,6 +10,7 @@ set -euo pipefail
 
 ARGS=(
   -b backup
+  --flake "$FLAKE_ROOT"
 )
 
 "$SCRIPTPATH/home-manager" "$@" "${ARGS[@]}"

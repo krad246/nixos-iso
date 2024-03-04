@@ -10,6 +10,7 @@ set -euo pipefail
 
 ARGS=(
   --use-remote-sudo
+  --flake "$FLAKE_ROOT"
 )
 
 "$SCRIPTPATH/nixos-rebuild" "$@" "${ARGS[@]}"
