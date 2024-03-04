@@ -3,5 +3,5 @@
     [
       ./krad246-cli.nix
     ]
-    ++ [discord spotify];
+    ++ [discord spotify vscode];
 }

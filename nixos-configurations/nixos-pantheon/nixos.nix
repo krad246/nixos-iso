@@ -1,4 +1,4 @@
 {ezModules, ...}: {
-  imports = with ezModules; [efiboot nixos pantheon-desktop flake-registry];
+  imports = with ezModules; [efiboot nixos flake-registry];
   networking.hostName = "nixos-pantheon";
 }
