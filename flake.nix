@@ -165,7 +165,13 @@
 
           users = {
             # Generate only one WSL config; requires a matching Windows user.
-            keerad.nameFunction = _host: "keerad@nixos-wsl";
+            keerad = {
+              nameFunction = _host: "keerad@nixos-wsl";
+              standalone = {
+                enable = true;
+                pkgs = import inputs.nixpkgs {};
+              };
+            };
 
             # Generate a config for all OS's but handle special hosts with conditional imports
             # The name of the source file maps to the actual generated targets
