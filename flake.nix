@@ -169,7 +169,7 @@
               nameFunction = _host: "keerad@nixos-wsl";
               standalone = {
                 enable = true;
-                pkgs = import inputs.nixpkgs {};
+                pkgs = import inputs.nixpkgs {}; # impure
               };
             };
 

@@ -20,5 +20,9 @@
         then "/Users/keerad"
         else "/home/keerad"
       );
+
+    packages = with pkgs; [
+      nodejs
+    ];
   };
 }
