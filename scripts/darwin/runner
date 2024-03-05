@@ -12,4 +12,4 @@ ARGS=(
   --flake "$FLAKE_ROOT"
 )
 
-"$SCRIPTPATH/darwin-rebuild" "$@" "${ARGS[@]}"
+"$SCRIPTPATH/darwin-rebuild" "${ARGS[@]}" "$@"

@@ -13,4 +13,4 @@ ARGS=(
   --flake "$FLAKE_ROOT"
 )
 
-"$SCRIPTPATH/home-manager" "$@" "${ARGS[@]}"
+"$SCRIPTPATH/home-manager" "${ARGS[@]}" "$@"

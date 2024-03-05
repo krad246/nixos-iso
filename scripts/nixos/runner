@@ -13,4 +13,4 @@ ARGS=(
   --flake "$FLAKE_ROOT"
 )
 
-"$SCRIPTPATH/nixos-rebuild" "$@" "${ARGS[@]}"
+"$SCRIPTPATH/nixos-rebuild" "${ARGS[@]}" "$@"

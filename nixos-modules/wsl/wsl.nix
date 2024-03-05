@@ -23,6 +23,7 @@
     interop.register = true;
     startMenuLaunchers = true;
     nativeSystemd = true;
+    docker-desktop.enable = true;
 
     wslConf = {
       automount = {
