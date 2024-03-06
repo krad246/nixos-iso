@@ -6,6 +6,7 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   # Drop some of the more... annoying of elementary's programs
   environment.pantheon.excludePackages = with pkgs.pantheon; [
     elementary-music

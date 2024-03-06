@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+
+[[ "${VERBOSE:-0}" -eq 1 ]] && set -v
+[[ "${DEBUG:-0}" -eq 1 ]] && set -x
+
+set -euo pipefail
+
+ARGS=(
+  --use-remote-sudo
+  --no-flake
+  -I nixos-config="$FLAKE_ROOT/configuration.nix"
+)
+
+command nix shell nixpkgs#nixos-install-tools --command nixos-generate-config --no-filesystems --dir "$FLAKE_ROOT"
+command nix run nixpkgs#nixos-rebuild -- "${ARGS[@]}" "$@"

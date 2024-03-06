@@ -24,7 +24,7 @@
         bottom
         nodePackages.undollar
       ]
-      ++ [comma]
+      ++ [comma nix-index]
       ++ [git gh]
       ++ [direnv nix-direnv];
 
