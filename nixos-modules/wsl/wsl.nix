@@ -1,4 +1,8 @@
-{
+{inputs, ...}: let
+  inherit (inputs) nixos-wsl;
+in {
+  imports = [nixos-wsl.nixosModules.wsl];
+
   # It might as well be...
   # Disable nonsensical services for it...
   boot = {

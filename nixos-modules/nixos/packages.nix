@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   environment = {
     systemPackages = with pkgs;
       [
@@ -27,10 +23,7 @@
       ++ [comma nix-index]
       ++ [git gh]
       ++ [direnv nix-direnv];
-
-    shellAliases = {
-      ls = "${lib.getExe pkgs.lsd} --color=auto";
-      cat = "${lib.getExe pkgs.bat} -p";
-    };
   };
+
+  nixpkgs.config.allowUnfree = true;
 }
