@@ -3,11 +3,12 @@
     # Package distributions
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.11-darwin";
-
     nixpkgs = nixpkgs-stable;
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # WSL distribution on NixOS
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl";
       inputs = {
@@ -169,7 +170,7 @@
               nameFunction = _host: "keerad@nixos-wsl";
               standalone = {
                 enable = true;
-                pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+                pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
               };
             };
 
@@ -180,7 +181,7 @@
               then "krad246-darwin@nixbook-air"
               else "krad246@${host}"
             );
-         };
+          };
         };
       };
     };

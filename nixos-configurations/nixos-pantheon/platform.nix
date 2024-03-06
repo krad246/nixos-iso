@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix] ++ [./filesystems.nix];
+  imports = [./filesystems.nix];
 
   programs.steam = {
     enable = true;
