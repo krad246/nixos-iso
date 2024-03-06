@@ -169,7 +169,7 @@
               nameFunction = _host: "keerad@nixos-wsl";
               standalone = {
                 enable = true;
-                pkgs = import inputs.nixpkgs {}; # impure
+                pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
               };
             };
 
@@ -180,11 +180,7 @@
               then "krad246-darwin@nixbook-air"
               else "krad246@${host}"
             );
-
-            # TODO: Figure out how to unify these outputs with the flake interface outside of perSystem
-            # IDEA: export krad246@nixbook-air as a package that consumes krad246-darwin@nixbook-air
-            # Can generate a flake output that is self referential to merge these disparate sites
-          };
+         };
         };
       };
     };

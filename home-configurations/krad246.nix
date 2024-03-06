@@ -1,13 +1,34 @@
 {
-  ezModules,
+  config,
   pkgs,
+  stdenv,
+  lib,
+  ezModules,
+  osConfig,
   ...
 }: {
   imports = with ezModules;
     [
-      ./krad246-cli.nix
+      colima
+      shellenv
     ]
-    ++ [discord spotify vscode];
+    ++ [discord spotify vscode nerdfonts kitty colima];
 
-  home.packages = with pkgs; [steam];
+  home = {
+    username = osConfig.users.users.krad246.name or "krad246";
+    stateVersion = lib.trivial.release;
+    homeDirectory =
+      osConfig.users.users.krad246.home
+      or (
+        if pkgs.stdenv.isDarwin
+        then "/Users/krad246"
+        else "/home/krad246"
+      );
+
+    sessionVariables = {
+      HOME = "${config.home.homeDirectory}";
+    };
+
+    packages = with pkgs; [signal-desktop];
+  };
 }

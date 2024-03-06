@@ -1,6 +1,14 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   networking.networkmanager.enable = true;
   networking.wireless.enable = !config.networking.networkmanager.enable;
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortal = [pkgs.xdg-desktop-portal-gtk];
+  services.flatpak.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;

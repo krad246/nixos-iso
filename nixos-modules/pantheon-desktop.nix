@@ -13,8 +13,6 @@
     elementary-feedback
     elementary-calculator
     elementary-code
-    elementary-mail
-    epiphany
   ];
 
   # Enable X11 windowing.

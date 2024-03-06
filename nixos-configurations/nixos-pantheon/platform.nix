@@ -6,6 +6,12 @@
 }: {
   imports = [./hardware-configuration.nix] ++ [./filesystems.nix];
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
   networking.hostName = "nixos-pantheon"; # Define your hostname.
 
   # Pick only one of the below networking options.
@@ -30,8 +36,6 @@
     description = "Keerthi";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      firefox
-      #  thunderbird
     ];
     initialHashedPassword = "";
   };

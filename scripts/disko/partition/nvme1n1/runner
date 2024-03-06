@@ -8,4 +8,4 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 set -euo pipefail
 
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko "$SCRIPTPATH/disko.nix"
+nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko "$SCRIPTPATH/disko.nix"
