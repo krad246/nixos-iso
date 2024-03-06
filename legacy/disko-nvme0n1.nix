@@ -1,0 +1,1 @@
+../nixos-configurations/nixos-pantheon/disko-nvme0n1.nix

@@ -1,0 +1,1 @@
+../../scripts/disko/partition/nvme1n1/disko.nix
