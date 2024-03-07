@@ -16,16 +16,29 @@ trap finish EXIT
 TARGET="$1"
 shift
 
+DEVICE="${1:-}"
+shift
+
+ARGSTR=(
+  --argstr device "/dev/nvme0n1"
+)
+if [[ -n "$DEVICE" ]]; then
+  ARGSTR=(
+   --argstr device "$DEVICE"
+  )
+fi
+
 MNT=/mnt
 NIXOS="$MNT/etc/nixos"
 
-mount -o X-mount.mkdir -B "$FLAKE_ROOT" "$NIXOS"
 if [[ -f "$SCRIPTPATH/$TARGET/runner" ]]; then
 	"$SCRIPTPATH/$TARGET/runner" "$@"
 else
-	command nix run github:nix-community/disko -- --mode disko "$FLAKE_ROOT/legacy/$TARGET/disko-config.nix"
-	command nix shell nixpkgs\#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems 
-	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_ROOT/legacy/$TARGET" "$@"
+	command nix run github:nix-community/disko -- --mode disko "$FLAKE_ROOT/legacy/$TARGET/disko-config.nix" "${ARGSTR[@]}" "$@"
+
+  mount -o X-mount.mkdir -B "$FLAKE_ROOT" "$NIXOS"
+	command nix shell nixpkgs\#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems
+	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_ROOT/legacy/$TARGET"
 
 	ARGS=(
 		--flake /etc/nixos#$TARGET

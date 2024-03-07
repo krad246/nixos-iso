@@ -4,6 +4,6 @@ in {
   imports =
     [disko.nixosModules.disko]
     ++ [
-      ./disko-nvme0n1.nix
+      ./disko-config.nix
     ];
 }
