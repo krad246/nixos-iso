@@ -7,4 +7,6 @@ in {
       ./disko-nvme1n1.nix
       ./impermanence.nix
     ];
+
+  fileSystems."/nix/persist".neededForBoot = true;
 }
