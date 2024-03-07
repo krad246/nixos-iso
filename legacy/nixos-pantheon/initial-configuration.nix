@@ -8,11 +8,11 @@
   ...
 }: {
   imports = [
-    ../nixos-modules/efiboot.nix
-    ../nixos-modules/nerdfonts.nix
-    ../nixos-modules/nixos
-    ../nixos-modules/pantheon-desktop.nix
-    ../nixos-modules/pipewire.nix
+    ../../nixos-modules/efiboot.nix
+    ../../nixos-modules/nerdfonts.nix
+    ../../nixos-modules/nixos
+    ../../nixos-modules/pantheon-desktop.nix
+    ../../nixos-modules/pipewire.nix
   ];
 
   # Use the GRUB 2 boot loader.
