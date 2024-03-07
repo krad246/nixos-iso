@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+
+[[ "${VERBOSE:-0}" -eq 1 ]] && set -v
+[[ "${DEBUG:-0}" -eq 1 ]] && set -x
+
+set -euo pipefail
+
+MNT=/mnt
+ARGS=(
+  -I nixos-config="$FLAKE_ROOT/configuration.nix"
+)
+
+mount -B "$FLAKE_ROOT" -o x-mount.mkdir "$MNT/etc/nixos"
+command nix shell nixpkgs#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems --dir "$FLAKE_ROOT"
+command nix shell nixpkgs#nixos-install-tools --command nixos-install --root "$MNT" "${ARGS[@]}" "$@"
+command nix shell nixpkgs#nixos-install-tools --command nixos-enter --root "$MNT" -c 'nixos-rebuild switch' "$@"
+umount /mnt/etc/nixos
