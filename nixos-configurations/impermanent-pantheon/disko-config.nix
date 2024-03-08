@@ -20,6 +20,15 @@
               mountpoint = "/boot";
             };
           };
+          home = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/home";
+            };
+          };
+
           nix = {
             size = "100%";
             content = {
