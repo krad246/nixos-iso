@@ -2,6 +2,7 @@
 
 flake := env_var('FLAKE_ROOT')
 scripts := flake / "scripts"
+tools := flake / "tools"
 runner := "runner"
 
 default:
