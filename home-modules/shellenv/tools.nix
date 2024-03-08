@@ -1,13 +1,14 @@
-{ezModules, ...}: {
-  imports = with ezModules; [
-    bash
-    bat
-    coreutils
-    direnv
-    git
-    zsh
-    nvim
-    starship
+{
+  imports = [
+    ../bash.nix
+    ../bat.nix
+    ../coreutils.nix
+    ../direnv.nix
+    ../git.nix
+    ../nerdfonts.nix
+    ../nvim
+    ../starship.nix
+    ../zsh.nix
   ];
 
   programs = {

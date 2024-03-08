@@ -173,14 +173,6 @@
                 pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
               };
             };
-
-            # Generate a config for all OS's but handle special hosts with conditional imports
-            # The name of the source file maps to the actual generated targets
-            krad246.nameFunction = host: (
-              if builtins.elem host ["nixbook-air"]
-              then "krad246-darwin@nixbook-air"
-              else "krad246@${host}"
-            );
           };
         };
       };

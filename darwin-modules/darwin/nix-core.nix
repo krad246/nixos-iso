@@ -28,6 +28,7 @@
     useDaemon = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
   services.nix-daemon.enable = true;
   system.stateVersion = 4;
 }

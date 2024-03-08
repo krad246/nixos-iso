@@ -3,16 +3,18 @@
   pkgs,
   stdenv,
   lib,
-  ezModules,
   osConfig,
   ...
 }: {
-  imports = with ezModules;
-    [
-      colima
-      shellenv
-    ]
-    ++ [discord spotify vscode nerdfonts kitty colima];
+  imports = [
+    ../home-modules/colima.nix
+    ../home-modules/discord.nix
+    ../home-modules/kitty.nix
+    ../home-modules/nerdfonts.nix
+    ../home-modules/shellenv
+    ../home-modules/spotify.nix
+    ../home-modules/vscode.nix
+  ];
 
   home = {
     username = osConfig.users.users.krad246.name or "krad246";
@@ -28,7 +30,5 @@
     sessionVariables = {
       HOME = "${config.home.homeDirectory}";
     };
-
-    packages = with pkgs; [signal-desktop];
   };
 }
