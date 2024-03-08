@@ -6,7 +6,7 @@
   inherit (inputs) home-manager;
 in {
   imports =
-    [./nixos-pantheon.nix ./platform.nix]
+    [./nixos-pantheon.nix ./platform.nix ./filesystems.nix ]
     ++ [
       home-manager.nixosModule
       {
