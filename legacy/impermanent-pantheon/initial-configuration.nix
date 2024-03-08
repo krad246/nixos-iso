@@ -13,6 +13,7 @@
     ../../nixos-modules/nixos
     ../../nixos-modules/pantheon-desktop.nix
     ../../nixos-modules/pipewire.nix
+    ../../nixos-modules/impermanence.nix
   ];
 
   # Use the GRUB 2 boot loader.
