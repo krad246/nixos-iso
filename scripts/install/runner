@@ -29,16 +29,17 @@ ARGSTR=(
 
 MNT=/mnt
 NIXOS="$MNT/etc/nixos"
+RUNNER="$SCRIPTPATH/$TARGET/runner"
+FLAKE_SRC="$FLAKE_ROOT"
 
-if [[ -f "$SCRIPTPATH/$TARGET/runner" ]]; then
-	"$SCRIPTPATH/$TARGET/runner" "$@"
+if [[ -f "$RUNNER" ]]; then
+	"$RUNNER" "$@"
 else
-	command nix run github:nix-community/disko -- --mode disko "$FLAKE_ROOT/legacy/$TARGET/disko-config.nix" "${ARGSTR[@]}" "$@"
+	command nix run github:nix-community/disko -- --mode disko "$FLAKE_SRC/legacy/$TARGET/disko-config.nix" "${ARGSTR[@]}"
 
-  mount -o X-mount.mkdir -B "$FLAKE_ROOT" "$NIXOS"
+  mount -o X-mount.mkdir -B "$FLAKE_SRC" "$NIXOS"
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems
-	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_ROOT/legacy/$TARGET"
-
+	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_SRC/legacy/$TARGET"
 	ARGS=(
 		--flake /etc/nixos#$TARGET
 	)

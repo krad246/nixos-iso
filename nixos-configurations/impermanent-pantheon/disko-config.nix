@@ -1,7 +1,7 @@
 {device ? "/dev/nvme0n1", ...}: {
   disko.devices = {
     disk.main = {
-      inherit device;
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -28,6 +28,14 @@
               mountpoint = "/nix";
             };
           };
+          persist = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/nix/persist";
+            };
+          };
         };
       };
     };
@@ -40,4 +48,3 @@
     };
   };
 }
-
