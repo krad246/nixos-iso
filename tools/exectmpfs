@@ -20,8 +20,8 @@ finish() {
 }
 
 trap finish EXIT
-mount -B "$FLAKE_ROOT" "$tmp/.ro"
+mount -B "$(realpath $FLAKE_ROOT)" "$tmp/.ro"
 mount -t overlay overlay -o lowerdir="$tmp/.ro",upperdir="$tmp/.rw/upper",workdir="$tmp/.rw/work" "$tmp"
 
-bash -cx -- "$*"
+env --chdir "$tmp" bash -cx -- "$*"
 
