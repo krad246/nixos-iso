@@ -8,11 +8,6 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 set -euo pipefail
 
-function finish {
-  umount -f "$NIXOS"
-}
-trap finish EXIT
-
 TARGET="$1"
 shift
 
@@ -36,13 +31,13 @@ if [[ -f "$RUNNER" ]]; then
 	"$RUNNER" "$@"
 else
 	command nix run github:nix-community/disko -- --mode disko "$FLAKE_SRC/legacy/$TARGET/disko-config.nix" "${ARGSTR[@]}"
-
-  mount -o X-mount.mkdir -B "$FLAKE_SRC" "$NIXOS"
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_SRC/legacy/$TARGET"
 	ARGS=(
 		--flake /etc/nixos#$TARGET
 	)
+
+  rsync -auvh $FLAKE_ROOT/* $MNT/etc/nixos/
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-enter --root "$MNT" -- nixos-rebuild boot ${ARGS[@]}
 fi
 
