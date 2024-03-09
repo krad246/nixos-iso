@@ -12,11 +12,13 @@
 /**/*.qcow2
 /**/*.tar.gz
 
+
 *~
 ,*
-.*.swp
-.*.swo
-.DS_Store
+/**/.*.swp
+/**/.*.swo
+/**/.DS_Store
+/**/*.nvimlog
 
 configuration.nix
 hardware-configuration.nix
