@@ -1,1 +1,1 @@
-{ imports = [ ../nixos-pantheon/nixos-pantheon.nix ]; }
+{imports = [../nixos-pantheon/nixos-pantheon.nix];}

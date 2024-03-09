@@ -155,15 +155,8 @@
       ezConfigs = {
         root = ./.;
         globalArgs = {inherit self inputs;};
+        nixos.hosts.nixos-iso-installer.userHomeModules = ["nixos"];
         home = {
-          extraSpecialArgs = {
-            inherit inputs;
-            imports = with inputs; [
-              agenix.homeManagerModule
-              mac-app-util.homeManagerModule
-            ];
-          };
-
           users = {
             # Generate only one WSL config; requires a matching Windows user.
             keerad = {
