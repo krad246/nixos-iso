@@ -34,10 +34,10 @@ else
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-generate-config --root "$MNT" --no-filesystems
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-install --root "$MNT" --no-root-passwd -I nixos-config="$FLAKE_SRC/legacy/$TARGET"
 	ARGS=(
-		--flake /etc/nixos#$TARGET
+		--flake "/etc/nixos#$TARGET"
 	)
 
-  rsync -auvh $FLAKE_ROOT/* $MNT/etc/nixos/
+  rsync -auvh $FLAKE_ROOT/* $NIXOS
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-enter --root "$MNT" -- nixos-rebuild boot ${ARGS[@]}
 fi
 
