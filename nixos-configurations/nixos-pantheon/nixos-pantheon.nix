@@ -20,7 +20,7 @@ in {
   users.users.krad246 = {
     isNormalUser = true;
     description = "Keerthi";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["NetworkManager" "wheel"];
     packages = with pkgs; [
     ];
     initialHashedPassword = "";
