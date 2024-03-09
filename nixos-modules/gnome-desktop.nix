@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services = {
     xserver = {
       enable = true;
@@ -7,6 +7,7 @@
       desktopManager.gnome.enable = true;
       displayManager.startx.enable = true;
       videoDrivers = ["modesetting"];
+      excludePackages = with pkgs; [xterm];
     };
   };
 

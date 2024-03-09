@@ -6,6 +6,8 @@
     elementary-feedback
     elementary-calculator
     elementary-code
+    elementary-videos
+    elementary-terminal
   ];
 
   # Enable X11 windowing.
@@ -23,12 +25,10 @@
       enable = true;
       enableCtrlAltBackspace = true;
       displayManager.lightdm.enable = true;
-      desktopManager.pantheon = {
-        enable = true;
-      };
+      desktopManager.pantheon.enable = true;
       displayManager.startx.enable = true;
-
       videoDrivers = ["modesetting"];
+      excludePackages = with pkgs; [xterm];
     };
   };
 
