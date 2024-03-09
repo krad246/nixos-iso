@@ -1,5 +1,5 @@
 let
-  nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJo+ccKOMJiBpk0V/GHsS2vddOksdoDtt+JrFazgex1u";
+  krad246 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKd83MiKefYk702WTPhimblIQGsZKcNDlnhwuYjqDgo";
 in {
-  "gh.age".publicKeys = [nixos];
+  "gh.age".publicKeys = [krad246];
 }

@@ -65,8 +65,6 @@
 
     gh = {
       enable = true;
-      extensions = [];
-
       gitCredentialHelper.enable = true;
     };
   };
