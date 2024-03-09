@@ -35,5 +35,7 @@ in {
     sessionVariables = {
       HOME = "${config.home.homeDirectory}";
     };
+
+    packages = with pkgs; [signal-desktop];
   };
 }

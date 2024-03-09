@@ -26,10 +26,6 @@ in {
     initialHashedPassword = "";
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "krad246";
-
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = lib.trivial.release;
 }

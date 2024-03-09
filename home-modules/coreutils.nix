@@ -23,6 +23,7 @@
         neofetch
         bottom
         nodePackages.undollar
+        duf
       ]
       ++ [comma];
 
