@@ -14,5 +14,6 @@ run VERB TASK *ARGS:
 develop:
   {{ flake / "bootstrap.bash" }}
 
-commit *ARGS:
-  nix develop --command git add {{ flake }} && git -C {{ flake }} commit {{ ARGS }}
+commit MESSAGE *FLAGS:
+  nix develop --command git add {{ flake }}
+  nix develop --command git -C {{ flake }} {{ FLAGS }} commit -m "{{ MESSAGE }}"
