@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   services = {
     xserver = {
       enableCtrlAltBackspace = true;
@@ -8,9 +8,6 @@
       videoDrivers = ["modesetting"];
     };
   };
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   hardware.opengl.enable = true;
   services.system76-scheduler.enable = true;
