@@ -1,6 +1,6 @@
 {
   environment.persistence."/nix/persist" = {
-    hideMounts = true;
+    hideMounts = false;
     directories = [
       "/var/log"
       "/var/lib/bluetooth"
@@ -24,4 +24,6 @@
   };
 
   fileSystems."/nix/persist".neededForBoot = true;
+
+  users.mutableUsers = false;
 }
