@@ -9,7 +9,10 @@ default:
   @just --list
 
 run VERB TASK *ARGS:
-  {{ scripts / TASK / runner }} {{ VERB }} {{ ARGS }}
+  nix develop --command {{ scripts / TASK / runner }} {{ VERB }} {{ ARGS }}
+
+develop:
+  {{ flake / "bootstrap.bash" }}
 
 commit *ARGS:
-  git add {{ flake }} && git -C {{ flake }} commit {{ ARGS }}
+  nix develop --command git add {{ flake }} && git -C {{ flake }} commit {{ ARGS }}

@@ -21,7 +21,7 @@
             };
           };
           home = {
-            size = "100%";
+            size = "128G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -30,7 +30,7 @@
           };
 
           nix = {
-            size = "100%";
+            size = "128G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -38,7 +38,7 @@
             };
           };
           persist = {
-            size = "100%";
+            size = "16G";
             content = {
               type = "filesystem";
               format = "ext4";
