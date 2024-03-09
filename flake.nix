@@ -156,6 +156,9 @@
         root = ./.;
         globalArgs = {inherit self inputs;};
         nixos.hosts.nixos-iso-installer.userHomeModules = ["nixos"];
+        nixos.hosts.nixos-pantheon.userHomeModules = ["krad246"];
+        nixos.hosts.impermanent-pantheon.userHomeModules = ["krad246"];
+
         home = {
           users = {
             # Generate only one WSL config; requires a matching Windows user.
