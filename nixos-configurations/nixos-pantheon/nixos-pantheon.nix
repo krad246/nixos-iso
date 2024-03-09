@@ -8,7 +8,7 @@
   inherit (inputs) nixos-hardware;
 in {
   imports =
-    (with ezModules; [efiboot nixos flake-registry] ++ [gnome-desktop nerdfonts])
+    (with ezModules; [efiboot nixos flake-registry] ++ [pantheon-desktop nerdfonts])
     ++ (with nixos-hardware.nixosModules; [
       common-cpu-amd
       common-gpu-amd
