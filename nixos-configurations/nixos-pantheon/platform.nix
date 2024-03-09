@@ -1,3 +1,3 @@
-{ezModules, ...}: {
-  imports = [ezModules.pipewire] ++ [./services.nix];
+{
+  imports = [./hardware-configuration.nix ./services.nix];
 }
