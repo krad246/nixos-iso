@@ -10,7 +10,10 @@
   inherit (inputs) agenix;
 in {
   imports =
-    [
+    [agenix.homeManagerModules.age]
+    ++ [
+      ../home-modules/agenix.nix
+      ../home-modules/chromium.nix
       ../home-modules/colima.nix
       ../home-modules/discord.nix
       ../home-modules/kitty.nix
@@ -18,8 +21,7 @@ in {
       ../home-modules/shellenv
       ../home-modules/spotify.nix
       ../home-modules/vscode.nix
-    ]
-    ++ [../home-modules/agenix.nix agenix.homeManagerModules.age];
+    ];
 
   home = {
     username = osConfig.users.users.krad246.name or "krad246";
@@ -37,5 +39,10 @@ in {
     };
 
     packages = with pkgs; [signal-desktop];
+  };
+
+  xdg.desktopEntries.proton-experimental = {
+    name = "Proton Experimental";
+    noDisplay = true;
   };
 }

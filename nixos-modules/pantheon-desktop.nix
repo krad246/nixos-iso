@@ -32,9 +32,15 @@
     };
   };
 
+  programs.pantheon-tweaks.enable = true;
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
   services.system76-scheduler.enable = true;
 }

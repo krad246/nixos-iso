@@ -11,10 +11,36 @@
     };
   };
 
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+      gnome-text-editor
+    ])
+    ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      gnome-calculator
+      gnome-maps
+      gnome-system-monitor
+      gedit # text editor
+      epiphany # web browser
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp
+    ]);
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };
+
   services.system76-scheduler.enable = true;
 }

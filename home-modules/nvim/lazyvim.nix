@@ -25,10 +25,14 @@
       p.yaml
     ]);
 in {
-  imports = with ezModules; [rust];
-
+  imports = with ezModules; [rust golang];
+  home.packages = with pkgs; [nil];
   programs.neovim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
+    # vimDiffAlias = true;
+    defaultEditor = true;
     package = pkgs.neovim-unwrapped;
     coc.enable = false;
     plugins = [
@@ -37,17 +41,6 @@ in {
   };
 
   home = {
-    packages = with pkgs;
-      [
-        ripgrep
-        fd
-        fzf
-      ]
-      ++ [
-        rust-analyzer-unwrapped
-        nil
-      ];
-
     file."./.config/nvim/" = {
       source = ./.;
       recursive = true;

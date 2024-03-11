@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     packages = with pkgs;
       [
@@ -10,26 +6,15 @@
         envsubst
       ]
       ++ [
-        bat
-        lsd
-
+        gnumake
         just
-        ripgrep
         safe-rm
-        tre
-        zoxide
       ]
       ++ [
         neofetch
-        bottom
         nodePackages.undollar
         duf
       ]
       ++ [comma];
-
-    shellAliases = {
-      ls = "${lib.getExe pkgs.lsd} --color=auto";
-      cat = "${lib.getExe pkgs.bat} -p";
-    };
   };
 }

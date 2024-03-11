@@ -1,4 +1,4 @@
 {pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
-  home.packages = [pkgs.discord];
+  home.packages = [pkgs.webcord];
 }
