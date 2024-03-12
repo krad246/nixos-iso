@@ -1,3 +1,3 @@
 {
-  imports = [./hardware-configuration.nix ./services.nix];
+  imports = [./kernel-modules.nix ./services.nix];
 }

@@ -122,13 +122,6 @@
         packages = {
           "x86_64-linux" =
             (let
-              inherit (self.nixosConfigurations) nixos-pantheon;
-              inherit (nixos-pantheon.config.system) build;
-            in {
-              nixos-pantheon-vm = build.vm;
-              nixos-pantheon-vm-with-bootloader = build.vmWithBootLoader;
-            })
-            // (let
               inherit (self.nixosConfigurations) nixos-iso-installer;
               inherit (nixos-iso-installer.config.system) build;
             in {nixos-iso-installer = build.isoImage;})
@@ -158,7 +151,6 @@
         nixos.hosts = {
           nixos-wsl.userHomeModules = ["keerad" "krad246"];
           nixos-iso-installer.userHomeModules = ["nixos"];
-          impermanent-pantheon.userHomeModules = ["krad246"];
           immutable-gnome.userHomeModules = ["krad246"];
         };
         darwin.hosts.nixbook-air.userHomeModules = ["krad246"];
