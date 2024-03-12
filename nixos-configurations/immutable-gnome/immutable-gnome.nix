@@ -1,14 +1,14 @@
 {
   inputs,
   ezModules,
-  pkgs,
   lib,
   ...
 }: let
+  nixosModules = ezModules;
   inherit (inputs) nixos-hardware;
 in {
   imports =
-    (with ezModules;
+    (with nixosModules;
       [efiboot nixos flake-registry impermanence]
       ++ [gnome-desktop nerdfonts]
       ++ [pipewire pam-u2f kdeconnect])
@@ -24,8 +24,6 @@ in {
     isNormalUser = true;
     description = "Keerthi";
     extraGroups = ["NetworkManager" "wheel"];
-    packages = with pkgs; [
-    ];
     initialHashedPassword = "$y$j9T$oZ2NvBDMhd93Rg4bK7eYf/$TwJuUcU8xdN4SzNfYaY5xA15B.tbHQkhdTmJyF80zzB";
   };
 

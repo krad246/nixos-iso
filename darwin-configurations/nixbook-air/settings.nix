@@ -1,5 +1,7 @@
-{ezModules, ...}: {
-  imports = with ezModules; [
+{ezModules, ...}: let
+  darwinModules = ezModules;
+in {
+  imports = with darwinModules; [
     dock
     finder
     single-user

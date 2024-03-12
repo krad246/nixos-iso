@@ -2,8 +2,8 @@
 {
   inputs,
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }: let
   inherit (inputs) mac-app-util;
@@ -15,8 +15,6 @@
   addMainProgram = drv: lib.meta.addMetaAttrs {mainProgram = lib.getName drv;} drv;
   fixup = addMainProgram instantiate;
 in {
-  imports = [mac-app-util.homeManagerModules.default];
-
   # Inject an activation script that reshims the app folders as described
   # in the attached issue.
   home.activation = {

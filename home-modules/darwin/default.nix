@@ -1,3 +1,0 @@
-{
-  imports = [./home-manager.nix];
-}

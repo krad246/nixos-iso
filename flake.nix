@@ -156,10 +156,10 @@
         root = ./.;
         globalArgs = {inherit self inputs;};
         nixos.hosts = {
+          nixos-wsl.userHomeModules = ["keerad" "krad246"];
           nixos-iso-installer.userHomeModules = ["nixos"];
-          nixos-pantheon.userHomeModules = ["krad246"];
-          impermanent-pantheon.userHomeModules = ["krad246" "nixos"];
-          immutable-gnome.userHomeModules = ["krad246" "nixos"];
+          impermanent-pantheon.userHomeModules = ["krad246"];
+          immutable-gnome.userHomeModules = ["krad246"];
         };
         darwin.hosts.nixbook-air.userHomeModules = ["krad246"];
         home = {

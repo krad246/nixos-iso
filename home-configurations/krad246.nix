@@ -1,26 +1,49 @@
-{
-  inputs,
+args @ {
+  ezModules,
   config,
-  pkgs,
   lib,
+  pkgs,
   osConfig,
   ...
 }: let
-  inherit (inputs) agenix;
+  homeModules = ezModules;
 in {
-  imports =
-    [agenix.homeManagerModules.age]
+  imports = with homeModules;
+    [
+      agenix
+      colima
+      discord
+      kitty
+      nerdfonts
+      shellenv
+      spotify
+      vscode
+    ]
     ++ [
-      ../home-modules/agenix.nix
-      ../home-modules/chromium.nix
-      ../home-modules/colima.nix
-      ../home-modules/discord.nix
-      ../home-modules/kdeconnect.nix
-      ../home-modules/kitty.nix
-      ../home-modules/nerdfonts.nix
-      ../home-modules/shellenv
-      ../home-modules/spotify.nix
-      ../home-modules/vscode.nix
+      ({
+        lib,
+        pkgs,
+        ...
+      }:
+        lib.mkIf pkgs.stdenv.isLinux (lib.mkMerge [
+          {
+            home.packages = with pkgs; [signal-desktop];
+          }
+          (import chromium)
+          (import kdeconnect)
+          (import webcord {inherit lib pkgs;})
+        ]))
+    ]
+    ++ [
+      ({
+        lib,
+        pkgs,
+        ...
+      }:
+        lib.mkIf pkgs.stdenv.isDarwin (lib.mkMerge [
+          (import darwin {inherit lib pkgs;})
+          (import dock (args // {inherit lib pkgs;}))
+        ]))
     ];
 
   home = {
@@ -37,12 +60,5 @@ in {
     sessionVariables = {
       HOME = "${config.home.homeDirectory}";
     };
-
-    packages = with pkgs; [signal-desktop];
-  };
-
-  xdg.desktopEntries.proton-experimental = {
-    name = "Proton Experimental";
-    noDisplay = true;
   };
 }

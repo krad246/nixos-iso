@@ -1,8 +1,9 @@
 {
-  pkgs,
   ezModules,
+  pkgs,
   ...
 }: let
+  homeModules = ezModules;
   treesitterWithGrammars =
     pkgs.vimPlugins.nvim-treesitter.withPlugins
     (p: [
@@ -24,13 +25,12 @@
       p.yaml
     ]);
 in {
-  imports = with ezModules; [rust golang];
+  imports = with homeModules; [rust golang];
   home.packages = with pkgs; [nil fd ripgrep];
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
-    # vimDiffAlias = true;
     defaultEditor = true;
     package = pkgs.neovim-unwrapped;
     coc.enable = false;

@@ -1,3 +1,3 @@
 {
-  imports = [../nixos-pantheon/platform.nix];
+  imports = [./hardware-configuration.nix ./services.nix];
 }

@@ -1,13 +1,13 @@
 {
-  inputs,
+  ezModules,
   lib,
-  osConfig,
   pkgs,
+  osConfig,
   ...
 }: let
-  inherit (inputs) agenix;
+  homeModules = ezModules;
 in {
-  imports = [agenix.homeManagerModules.default] ++ [../../home-modules/agenix.nix ../../home-modules/shellenv ../../home-modules/kitty.nix];
+  imports = with homeModules; [shellenv];
   home = {
     username = osConfig.users.users.nixos.name or "nixos";
     stateVersion = lib.trivial.release;
@@ -15,6 +15,6 @@ in {
       osConfig.users.users.nixos.home
       or "/home/nixos";
 
-    packages = with pkgs; [direnv nix-direnv git gh];
+    packages = with pkgs; [];
   };
 }

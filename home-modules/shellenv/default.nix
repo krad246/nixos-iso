@@ -1,19 +1,21 @@
-{
+{ezModules, ...}: let
+  homeModules = ezModules;
+in {
   imports =
-    [
-      ../bash.nix
-      ../bat.nix
-      ../bottom.nix
-      ../coreutils.nix
-      ../colima.nix
-      ../direnv.nix
-      ../git.nix
-      ../nerdfonts.nix
-      ../nvim
-      ../ripgrep.nix
-      ../starship.nix
-      ../zoxide.nix
-      ../zsh.nix
-    ]
+    (with homeModules; [
+      bash
+      bat
+      bottom
+      coreutils
+      colima
+      direnv
+      git
+      nerdfonts
+      nvim
+      ripgrep
+      starship
+      zoxide
+      zsh
+    ])
     ++ [./settings.nix];
 }

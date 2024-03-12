@@ -8,8 +8,6 @@
     };
 
     taps = [
-      # "homebrew/core"
-      # "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
       "homebrew/services"
