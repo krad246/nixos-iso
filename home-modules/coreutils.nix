@@ -4,11 +4,14 @@
       [
         uutils-coreutils
         envsubst
+        wget
+        unzip
+        safe-rm
       ]
       ++ [
         gnumake
         just
-        safe-rm
+        gcc
       ]
       ++ [
         neofetch

@@ -7,7 +7,6 @@
     pkgs.vimPlugins.nvim-treesitter.withPlugins
     (p: [
       p.bash
-      p.c
       p.cpp
       p.comment
       p.dockerfile
@@ -26,7 +25,7 @@
     ]);
 in {
   imports = with ezModules; [rust golang];
-  home.packages = with pkgs; [nil];
+  home.packages = with pkgs; [nil fd ripgrep];
   programs.neovim = {
     enable = true;
     viAlias = true;

@@ -11,7 +11,7 @@ in {
     (with ezModules;
       [efiboot nixos flake-registry impermanence]
       ++ [gnome-desktop nerdfonts]
-      ++ [pipewire pam-u2f])
+      ++ [pipewire pam-u2f kdeconnect])
     ++ (with nixos-hardware.nixosModules; [
       common-cpu-amd
       common-gpu-amd

@@ -1,11 +1,8 @@
 {
   config,
-  ezModules,
   pkgs,
   ...
 }: {
-  imports = [ezModules.homebrew];
-
   homebrew = {
     brews = ["bash" "zsh"];
   };

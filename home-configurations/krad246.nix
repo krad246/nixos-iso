@@ -2,7 +2,6 @@
   inputs,
   config,
   pkgs,
-  stdenv,
   lib,
   osConfig,
   ...
@@ -16,6 +15,7 @@ in {
       ../home-modules/chromium.nix
       ../home-modules/colima.nix
       ../home-modules/discord.nix
+      ../home-modules/kdeconnect.nix
       ../home-modules/kitty.nix
       ../home-modules/nerdfonts.nix
       ../home-modules/shellenv

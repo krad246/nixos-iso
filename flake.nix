@@ -158,8 +158,10 @@
         nixos.hosts = {
           nixos-iso-installer.userHomeModules = ["nixos"];
           nixos-pantheon.userHomeModules = ["krad246"];
-          nixos.hosts.impermanent-pantheon.userHomeModules = ["krad246"];
+          impermanent-pantheon.userHomeModules = ["krad246" "nixos"];
+          immutable-gnome.userHomeModules = ["krad246" "nixos"];
         };
+        darwin.hosts.nixbook-air.userHomeModules = ["krad246"];
         home = {
           users = {
             # Generate only one WSL config; requires a matching Windows user.

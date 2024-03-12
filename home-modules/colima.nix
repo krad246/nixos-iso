@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [colima];
+  home.packages = with pkgs; [colima docker];
 }
