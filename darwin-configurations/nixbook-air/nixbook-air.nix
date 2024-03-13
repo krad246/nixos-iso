@@ -8,6 +8,5 @@ in {
     createHome = true;
   };
 
-  homebrew.brews = ["colima"];
-  homebrew.casks = ["docker" "bluesnooze"];
+  homebrew.casks = ["bluesnooze"] ++ ["docker"];
 }
