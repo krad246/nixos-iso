@@ -6,7 +6,26 @@
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.11-darwin";
     nixpkgs = nixpkgs-stable;
 
+    # Hardware platform configurations with options preset
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Deployment scripts + other bits n bobs
+    mission-control.url = "github:Platonic-Systems/mission-control";
+
+    # Simple modules for generating a variety of image formats
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    # Immutable OS root filesystem (erase your darlings)
+    impermanence.url = "github:nix-community/impermanence";
+
+    # Declarative disk partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     # WSL distribution on NixOS
     nixos-wsl = {
@@ -74,19 +93,6 @@
         nixpkgs.follows = "nixpkgs-unstable";
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
-    };
-
-    # Deployment scripts + other bits n bobs
-    mission-control.url = "github:Platonic-Systems/mission-control";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     agenix = {

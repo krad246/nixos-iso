@@ -36,6 +36,7 @@
         push = {
           default = "simple";
           followtags = true;
+          autoSetupRemote = true;
         };
 
         rebase = {
@@ -70,16 +71,14 @@
   };
 
   home = {
-    file."./.config/gh/" = {
-      source = ./.;
-      recursive = true;
-    };
+    # file."./.config/gh/" = {
+    #   source = ./.;
+    #   recursive = true;
+    # };
 
-    # Treesitter is configured as a locally developed module in lazy.nvim
-    # we hardcode a symlink here so that we can refer to it in our lazy config
-    file."./.config/git/" = {
-      recursive = true;
-      source = ./.;
-    };
+    # file."./.config/git/" = {
+    #   recursive = true;
+    #   source = ./.;
+    # };
   };
 }
