@@ -1,4 +1,14 @@
 {
+  nixConfig = {
+    extra-substituters = [
+      "https://krad246.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "krad246.cachix.org-1:naxMicfqW5ZWr7XNZeLfAT3YHWCDLs3noY0aI3eBfvQ="
+    ];
+    extra-experimental-features = "nix-command flakes";
+  };
+
   inputs = rec {
     # Package distributions
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-23.11";

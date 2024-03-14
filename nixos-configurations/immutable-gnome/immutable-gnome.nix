@@ -11,7 +11,8 @@ in {
     (with nixosModules;
       [efiboot nixos flake-registry impermanence]
       ++ [gnome-desktop nerdfonts]
-      ++ [pipewire pam-u2f kdeconnect])
+      ++ [pipewire pam-u2f kdeconnect]
+      ++ [docker cachix])
     ++ (with nixos-hardware.nixosModules; [
       common-cpu-amd
       common-gpu-amd
@@ -26,6 +27,8 @@ in {
     extraGroups = ["NetworkManager" "wheel"];
     initialHashedPassword = "$y$j9T$oZ2NvBDMhd93Rg4bK7eYf/$TwJuUcU8xdN4SzNfYaY5xA15B.tbHQkhdTmJyF80zzB";
   };
+
+  nix.settings.trusted-users = ["krad246"];
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = lib.trivial.release;
