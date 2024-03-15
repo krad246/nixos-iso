@@ -30,6 +30,7 @@
         };
         Service = {
           ExecStart = "${script}";
+          Environment = ["PATH=${osConfig.system.path}/bin"];
         };
       };
     };

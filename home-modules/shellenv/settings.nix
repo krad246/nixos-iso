@@ -1,4 +1,8 @@
 {
+  osConfig,
+  lib,
+  ...
+}: {
   # Install home-manager into the PATH.
   # It's only used to compile the derivation otherwise and is deleted after.
   programs.home-manager.enable = true;
@@ -13,4 +17,8 @@
   '';
 
   news.display = "silent";
+
+  nix = lib.mkDefault {
+    inherit (osConfig.nix) package settings;
+  };
 }
