@@ -1,4 +1,5 @@
 {
+  config,
   osConfig,
   lib,
   pkgs,
@@ -19,6 +20,12 @@
         --foreground ${maybeRosetta}
     '';
 
+  nixosEnv = osConfig.system or {};
+  darwinEnv = osConfig.environment or {};
+
+  nixosPath = nixosEnv.path or "";
+  darwinPath = darwinEnv.systemPath or "";
+
   mkSystemdService = script: arch:
     lib.mkIf pkgs.stdenv.isLinux {
       systemd.user.services."colima-${arch}-autostart" = {
@@ -30,7 +37,7 @@
         };
         Service = {
           ExecStart = "${script}";
-          Environment = ["PATH=${osConfig.system.path}/bin"];
+          Environment = ["PATH=${nixosPath}/bin:${lib.strings.concatStringsSep ":" config.home.sessionPath}"];
         };
       };
     };
@@ -41,9 +48,7 @@
         enable = true;
         config = {
           EnvironmentVariables = {
-            PATH = "${
-              osConfig.environment.systemPath
-            }";
+            PATH = "${darwinPath}:${config.home.sessionPath}";
           };
           Program = "${script}";
           ProgramArguments = ["${script}"];

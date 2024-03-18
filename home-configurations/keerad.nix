@@ -25,4 +25,6 @@
       nodejs
     ];
   };
+
+  nix.settings.trusted-users = ["keerad"];
 }

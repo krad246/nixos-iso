@@ -181,7 +181,7 @@
               nameFunction = _host: "keerad@nixos-wsl";
               standalone = {
                 enable = true;
-                pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+                pkgs = import inputs.nixpkgs {};
               };
             };
           };

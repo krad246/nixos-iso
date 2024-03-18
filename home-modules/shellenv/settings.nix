@@ -1,6 +1,7 @@
 {
-  osConfig,
   lib,
+  pkgs,
+  osConfig,
   ...
 }: {
   # Install home-manager into the PATH.
@@ -17,8 +18,5 @@
   '';
 
   news.display = "silent";
-
-  nix = lib.mkDefault {
-    inherit (osConfig.nix) package settings;
-  };
+  nix = lib.mkDefault osConfig.nix or {package = pkgs.nixFlakes;};
 }

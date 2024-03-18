@@ -31,4 +31,6 @@
     initialHashedPassword = "";
     extraGroups = ["wheel"];
   };
+
+  nix.settings.trusted-users = ["keerad"];
 }
