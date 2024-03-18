@@ -24,7 +24,7 @@
   darwinPathCfg = lib.attrsets.attrByPath ["environment" "systemPath"] "" osConfig;
   homePathCfg = lib.strings.concatStringsSep ":" config.home.sessionPath;
 
-  linuxPath = lib.strings.concatStringsSep ":" ["${homePathCfg}" "${nixosPathCfg}/bin"];
+  linuxPath = lib.strings.concatStringsSep ":" ["${homePathCfg}" "${lib.makeBinPath [nixosPathCfg]}"];
   darwinPath = lib.strings.concatStringsSep ":" ["${homePathCfg}" "${darwinPathCfg}"];
   mkSystemdService = script: arch:
     lib.mkIf pkgs.stdenv.isLinux {
@@ -61,6 +61,7 @@
   mkUnits = arch: let script = mkScript arch; in lib.mkMerge [(mkSystemdService script arch) (mkLaunchUnit script arch)];
 in {
   home.packages = with pkgs; [colima docker];
+  home.sessionPath = ["${lib.makeBinPath [pkgs.docker]}"];
   imports = [
     (_: mkUnits "x86_64")
     (_: mkUnits "aarch64")
