@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = [ezModules.nixos ezModules.wsl] ++ [./platform.nix];
+  imports = [ezModules.nixos ezModules.wsl ezModules.cachix] ++ [./platform.nix];
 
   networking.hostName = "nixos-wsl";
 

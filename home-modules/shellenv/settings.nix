@@ -18,5 +18,8 @@
   '';
 
   news.display = "silent";
-  nix = lib.mkDefault osConfig.nix or {package = pkgs.nixFlakes;};
+  nix = lib.mkDefault {
+    package = lib.attrsets.attrByPath ["nix" "package"] pkgs.nixFlakes osConfig;
+    settings = lib.attrsets.attrByPath ["nix" "settings"] {} osConfig;
+  };
 }

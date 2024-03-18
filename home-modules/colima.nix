@@ -20,12 +20,12 @@
         --foreground ${maybeRosetta}
     '';
 
-  nixosEnv = osConfig.system or {};
-  darwinEnv = osConfig.environment or {};
+  nixosPathCfg = lib.attrsets.attrByPath ["system" "path"] "" osConfig;
+  darwinPathCfg = lib.attrsets.attrByPath ["environment" "systemPath"] "" osConfig;
+  homePathCfg = lib.strings.concatStringsSep ":" config.home.sessionPath;
 
-  nixosPath = nixosEnv.path or "";
-  darwinPath = darwinEnv.systemPath or "";
-
+  linuxPath = lib.strings.concatStringsSep ":" ["${homePathCfg}" "${nixosPathCfg}/bin"];
+  darwinPath = lib.strings.concatStringsSep ":" ["${homePathCfg}" "${darwinPathCfg}"];
   mkSystemdService = script: arch:
     lib.mkIf pkgs.stdenv.isLinux {
       systemd.user.services."colima-${arch}-autostart" = {
@@ -37,7 +37,7 @@
         };
         Service = {
           ExecStart = "${script}";
-          Environment = ["PATH=${nixosPath}/bin:${lib.strings.concatStringsSep ":" config.home.sessionPath}"];
+          Environment = ["PATH=${linuxPath}"];
         };
       };
     };
@@ -48,14 +48,12 @@
         enable = true;
         config = {
           EnvironmentVariables = {
-            PATH = "${darwinPath}:${config.home.sessionPath}";
+            PATH = "${darwinPath}";
           };
           Program = "${script}";
           ProgramArguments = ["${script}"];
           RunAtLoad = true;
           KeepAlive = true;
-          StandardOutPath = "/tmp/colima-${arch}-autostart.stdout";
-          StandardErrorPath = "/tmp/colima-${arch}-autostart.stderr";
         };
       };
     };
