@@ -180,8 +180,8 @@
             keerad = {
               nameFunction = _host: "keerad@nixos-wsl";
               standalone = {
-                enable = true;
-                pkgs = import inputs.nixpkgs {};
+                enable = builtins ? currentSystem;
+                pkgs = import inputs.nixpkgs {system = builtins.currentSystem;};
               };
             };
           };

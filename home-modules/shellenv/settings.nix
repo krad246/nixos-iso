@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   osConfig,
@@ -21,5 +22,11 @@
   nix = lib.mkDefault {
     package = lib.attrsets.attrByPath ["nix" "package"] pkgs.nixFlakes osConfig;
     settings = lib.attrsets.attrByPath ["nix" "settings"] {} osConfig;
+  };
+
+  home.sessionVariables = let
+    nixPath = lib.attrsets.attrByPath ["nix" "nixPath"] ["nixpkgs=${inputs.nixpkgs}"] osConfig;
+  in {
+    NIX_PATH = "${lib.strings.concatStringsSep ":" nixPath}";
   };
 }

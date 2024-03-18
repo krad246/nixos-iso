@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = [ezModules.nixos ezModules.wsl ezModules.cachix] ++ [./platform.nix];
+  imports = with ezModules; [nixos wsl flake-registry cachix] ++ [./platform.nix];
 
   networking.hostName = "nixos-wsl";
 
@@ -19,7 +19,7 @@
     home = "/home/keerad";
     description = "Keerthi Radhakrishnan";
     initialHashedPassword = "";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "NetworkManager"];
   };
 
   # Linux user
@@ -29,8 +29,8 @@
     home = "/home/krad246";
     description = "Keerthi Radhakrishnan";
     initialHashedPassword = "";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "NetworkManager"];
   };
 
-  nix.settings.trusted-users = ["keerad"];
+  nix.settings.trusted-users = ["keerad" "krad246"];
 }

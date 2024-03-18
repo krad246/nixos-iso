@@ -7,6 +7,7 @@
         wget
         unzip
         safe-rm
+        jq
       ]
       ++ [
         gnumake
