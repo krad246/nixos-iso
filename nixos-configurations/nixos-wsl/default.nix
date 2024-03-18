@@ -19,7 +19,7 @@
     home = "/home/keerad";
     description = "Keerthi Radhakrishnan";
     initialHashedPassword = "";
-    extraGroups = ["wheel" "NetworkManager"];
+    extraGroups = ["wheel" "NetworkManager" "docker"];
   };
 
   # Linux user
@@ -29,7 +29,7 @@
     home = "/home/krad246";
     description = "Keerthi Radhakrishnan";
     initialHashedPassword = "";
-    extraGroups = ["wheel" "NetworkManager"];
+    extraGroups = ["wheel" "NetworkManager" "docker"];
   };
 
   nix.settings.trusted-users = ["keerad" "krad246"];
