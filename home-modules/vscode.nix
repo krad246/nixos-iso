@@ -4,7 +4,7 @@
     enable = true;
     package =
       if pkgs.stdenv.isLinux
-      then pkgs.vscode.fhs
+      then pkgs.vscode.fhsWithPackages (ps: with ps; [nodejs])
       else pkgs.vscode;
   };
 }

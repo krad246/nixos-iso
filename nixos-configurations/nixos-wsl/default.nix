@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = with ezModules; [nixos wsl wsl-docker-desktop flake-registry cachix] ++ [./platform.nix];
+  imports = with ezModules; [nixos wsl wsl-docker-desktop flake-registry cachix nix-ld] ++ [./platform.nix];
 
   networking.hostName = "nixos-wsl";
 
