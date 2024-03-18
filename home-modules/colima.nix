@@ -60,7 +60,7 @@
 
   mkUnits = arch: let script = mkScript arch; in lib.mkMerge [(mkSystemdService script arch) (mkLaunchUnit script arch)];
 in {
-  home.packages = with pkgs; [colima];
+  home.packages = with pkgs; [colima docker];
   imports = [
     (_: mkUnits "x86_64")
     (_: mkUnits "aarch64")
