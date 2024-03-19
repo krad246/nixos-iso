@@ -12,7 +12,7 @@ in {
       [efiboot nixos flake-registry impermanence]
       ++ [gnome-desktop nerdfonts]
       ++ [pipewire pam-u2f kdeconnect]
-      ++ [docker cachix])
+      ++ [docker cachix nix-ld])
     ++ (with nixos-hardware.nixosModules; [
       common-cpu-amd
       common-gpu-amd

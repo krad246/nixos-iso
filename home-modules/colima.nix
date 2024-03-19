@@ -63,7 +63,6 @@ in {
   home.packages = with pkgs; [colima docker];
   home.sessionPath = ["${lib.makeBinPath [pkgs.docker]}"];
   imports = [
-    (_: mkUnits "x86_64")
     (_: mkUnits "aarch64")
   ];
 }
