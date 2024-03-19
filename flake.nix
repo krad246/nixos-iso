@@ -118,6 +118,11 @@
       };
     };
 
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -144,6 +149,11 @@
         ++ [./tools];
 
       flake = {
+        agenix-rekey = inputs.agenix-rekey.configure {
+          userFlake = self;
+          nodes = self.nixosConfigurations;
+        };
+
         packages = {
           "x86_64-linux" =
             (let
