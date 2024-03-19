@@ -22,7 +22,7 @@ in {
       WantedBy = ["default.target"];
     };
     Service = {
-      ExecStart = "${pkgs.bash}/bin/bash -c \\
+      ExecStart = "-${pkgs.bash}/bin/bash -c \\
         '${pkgs.gh}/bin/gh auth login -p ssh \\
           --with-token < ${config.age.secrets.gh.path}'";
       Environment = ["XDG_RUNTIME_DIR=%t"];
