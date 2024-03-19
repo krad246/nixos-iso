@@ -8,6 +8,8 @@
   imports = with ezModules; [
     colima
     shellenv
+
+    vscode
   ];
 
   home = {
