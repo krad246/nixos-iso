@@ -27,8 +27,11 @@
   home.sessionVariables = let
     nixPath = lib.attrsets.attrByPath ["nix" "nixPath"] ["nixpkgs=${inputs.nixpkgs}"] osConfig;
     osVars = lib.attrsets.attrByPath ["environment" "variables"] {} osConfig;
-  in {
-    NIX_PATH = "${lib.strings.concatStringsSep ":" nixPath}";
-    inherit (osVars) NIX_LD NIX_LD_LIBRARY_PATH;
-  };
+  in
+    {
+      NIX_PATH = "${lib.strings.concatStringsSep ":" nixPath}";
+    }
+    // lib.attrsets.optionalAttrs (lib.attrsets.hasAttrByPath ["NIX_LD"] osVars) {
+      inherit (osVars) NIX_LD NIX_LD_LIBRARY_PATH;
+    };
 }
