@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs = {
     git = {
       enable = true;
@@ -70,15 +74,7 @@
     };
   };
 
-  home = {
-    # file."./.config/gh/" = {
-    #   source = ./.;
-    #   recursive = true;
-    # };
-
-    # file."./.config/git/" = {
-    #   recursive = true;
-    #   source = ./.;
-    # };
-  };
+  xdg.configFile."gh/config.yml".source =
+    lib.mkForce (config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/gh/config.yml");
 }
