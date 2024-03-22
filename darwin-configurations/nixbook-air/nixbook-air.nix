@@ -8,5 +8,7 @@ in {
     createHome = true;
   };
 
+  nix.settings.trusted-users = ["krad246"];
+
   homebrew.casks = ["bluesnooze"] ++ ["docker"];
 }
