@@ -15,7 +15,7 @@
         -p ${arch} \
         --arch ${arch} \
         --disk 16 \
-        --cpu 4 --memory 4 \
+        --cpu 8 --memory 8 \
         --verbose \
         --foreground ${maybeRosetta}
     '';
