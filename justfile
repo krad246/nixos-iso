@@ -19,4 +19,6 @@ build TARGET *ARGS: (exec "build" TARGET ARGS)
 
 check *ARGS: (exec "check" "flake" ARGS)
 
+show *ARGS: (exec "show" "flake" ARGS)
+
 switch PLATFORM *ARGS: (exec "switch" PLATFORM ARGS)

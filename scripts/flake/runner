@@ -6,12 +6,16 @@ ARGS=(
 VERB="$1"
 shift
 
+nix() {
+  command nix --extra-experimental-features 'nix-command flakes' "$@"
+}
+
 case "$VERB" in
   show|check)
     nix flake "$VERB" "${ARGS[@]}" "$@"
     ;;
   *)
 	# todo strip out flake refs here
-    nix develop --command nix "$VERB" "${ARGS[@]}" "$@"
+    nix develop --command nix --extra-experimental-features 'nix-command flakes'  "$VERB" "${ARGS[@]}" "$@"
     ;;
 esac

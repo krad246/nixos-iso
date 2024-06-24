@@ -6,7 +6,7 @@
 
       aliases = {
         whoami = "config user.name";
-        tree = "log --pretty=oneline --graph --decorate --all";
+        tree = "log --pretty=oneline --graph --decorate --all --reflog";
       };
 
       extraConfig = {

@@ -40,4 +40,3 @@ else
   rsync -auvh $FLAKE_ROOT/* $NIXOS
 	command nix shell nixpkgs\#nixos-install-tools --command nixos-enter --root "$MNT" -- nixos-rebuild boot ${ARGS[@]}
 fi
-
